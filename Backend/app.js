@@ -1,13 +1,25 @@
-import express from 'express'
+import express from 'express';
+import { Server } from 'socket.io';
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
+// Initialize Socket.IO directly with the Express app
+const server =app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
 
-app.get('/',(req,res)=>{
-    res.send("working")
-})
+const io = new Server(server);
+console.log("🚀 ~ io:", io)
 
-app.listen(()=>{
-    console.log(`Server is running port ${port}`)
-})
+io.on('connection', (socket) => {
+    console.log('Socket Connection', socket.id);
+    // You can handle other socket events here
+});
+
+app.get('/', (req, res) => {
+    console.log("Request received");
+    res.send("working");
+});
+
+// Start the server directly
