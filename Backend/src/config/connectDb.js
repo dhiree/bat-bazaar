@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
-
+import dotenv from "dotenv"
+dotenv.config()
 
 const connectDb = async (req, res) => {
     try {
-        const data = await mongoose.connect(process.env.MONGO_URL)
+        const data = await mongoose.connect(process.env.MONGO_URI)
         if (data) {
-            console.log("Mongoo Not Connect")
+            console.log("Mongoo Connect Successfully.......")
         }else{
             console.log("Mongoose Is Not Connect..................")
         }
@@ -15,4 +16,4 @@ const connectDb = async (req, res) => {
     }
 }
 
-export default connectDb
+export default{ connectDb}

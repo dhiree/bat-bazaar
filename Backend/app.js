@@ -1,12 +1,12 @@
 import express from 'express';
 import { Server } from 'socket.io';
-import {connectDb} from "./src/config/connectDb"
-import userRouter from "./src/routes/userRoute"
+import connectDba from "./src/config/connectDb.js"
+import userRouter from "./src/routes/userRoute.js"
 
 const app = express();
 const port = 3000;
 
-connectDb()
+connectDba.connectDb()
 
 // Initialize Socket.IO directly with the Express app
 const server =app.listen(port, () => {
