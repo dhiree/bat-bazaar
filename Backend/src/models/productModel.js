@@ -44,10 +44,10 @@ const ProductSchema = new mongoose.Schema(
         comment: String,
       },
     ],
-    discount: {
-      type: Number,
-      default: 0,
-    },
+    
+    timeForBat: {
+        type: Date, 
+      },
   },
   {
     timestamps: true,
